@@ -1,1 +1,0 @@
-[is-rate]<input type="radio" name="ans" value="{id}"/>[/is-rate]{answer} [not-rate]({number} - {width}%) <div class="bonus_entry_progress"><div class="bonus_entry_bar" style="width:{width}%">&nbsp;</div></div>[/not-rate]<br/>

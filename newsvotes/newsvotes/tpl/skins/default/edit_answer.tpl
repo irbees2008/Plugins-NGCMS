@@ -1,1 +1,0 @@
-{num}. <input type="text" name="ans[{id}]" value="{name}"/><br/>
