@@ -1,0 +1,15 @@
+ID: events
+Name: Мероприятия
+Version: 0.1
+Actions: ppages; events.php
+Actions: index, rpc; block_events.php
+File: events.php
+Config: config.php
+Install: install.php
+Deinstall: uninstall.php
+Type: plugin
+Title: Мероприятия
+Description: Организует на сайте систему мероприятий
+Author: Rostunov Sergey
+Author_URI: http://rostunov.com
+preinstall: no

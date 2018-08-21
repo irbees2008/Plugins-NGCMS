@@ -1,0 +1,16 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: ga_stat
+Name: Статистика Google Analytics
+Version: 0.4
+Acts: ppages
+File: ga_stat.php
+Config: config.php
+Type: plugin
+Title: Статистика Google Analytics
+Description: Показывает графики статистики Google Analytics
+Author: Rostunov Sergey
+Author_URI: http://rostunov.com
+preinstall: no

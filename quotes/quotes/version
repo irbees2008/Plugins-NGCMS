@@ -1,0 +1,14 @@
+ID: quotes
+Name: Цитатник
+Version: 0.01
+Actions: ppages; quotes.php
+Actions: index; block_quotes.php
+Config: config.php
+Install: install.php
+Type: plugin
+Title: Цитатник
+Description: Отображет цитаты на главной странице или в блоке
+Information: 
+Author: Nail' R. Davydov (ROZARD)
+Author_URI: http://ngcms.ru/
+preinstall: yes

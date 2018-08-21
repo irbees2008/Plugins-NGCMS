@@ -1,0 +1,19 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: thanks
+Name:  нопка спасибо
+Version: 0.1
+Acts: index, news, news_short, news_full, action.ppages.uprofile, ppages 
+File: thanks.php
+Type: plugin
+Install: install.php
+Deinstall: uninstall.php
+Description:  нопка/ссылка "—пасибо", нажав на которую, пользователь благодарит автора новости/статьи
+Author:  Vladimir.Kzi
+Author_URI: http://vladimir-kzi.org.ua/
+Title:  нопка спасибо
+Information:  нопка/ссылка "—пасибо", нажав на которую, пользователь благодарит автора новости/статьи
+Preinstall: default_no
+

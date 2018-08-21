@@ -1,0 +1,46 @@
+Плагин twitter_post
+==============================================
+
+С помощью данного плагина Вы можете осуществлять рассылку новостей в твиттер.
+
+Использование:
+1) Создание twitter аккаунта и приложения:
+https://apps.twitter.com/app/new
+
+Скриншоты настройки приложения:
+http://i.snag.gy/xizsK.jpg
+http://i.snag.gy/WZTbl.jpg
+
+2) Настройка плагина, указать параметры:
+"Consumer key", "Consumer secret", "Access token", "Access token secret", "Шаблон сообщения".
+Переменные {news_title} и {link_to_news} в шаблоне сообщения означают соответственно заголовок новости и ссылку на новость.
+
+3) В /engine/skins/default/tpl/news/add.tpl добавить 2 переменные:
+{{ plugin.twitter_post_checkbox }} - чекбокс, при отметке которого при добавлении новости будут отправляться твиты.
+Дбавить можно, например, после:
+{% if (pluginIsActive('comments')) %}<hr/>{{ lang['comments:mode.header'] }}:
+<select name="allow_com">
+<option value="0"{{ plugin.comments['acom:0'] }}>{{ lang['comments:mode.disallow'] }}
+<option value="1"{{ plugin.comments['acom:1'] }}>{{ lang['comments:mode.allow'] }}
+<option value="2"{{ plugin.comments['acom:2'] }}>{{ lang['comments:mode.default'] }}
+</select>
+{% endif %}
+
+{{ plugin.twitter_post_textarea }} - текстовая область в которой отображается шаблон сообщения, в неё также можно дописывать любой другой свой текст, а также хэштеги.
+Дбавить можно, например, после:
+{% if (flags.meta) %}
+  <tr>
+   <td><img src="{{ skins_url }}/images/nav.png" hspace="8" alt="" /></td>
+   <td>{{ lang.addnews['description'] }}:</td>
+   <td><textarea name="description" cols="80"></textarea></td>
+  </tr>
+  <tr>
+   <td><img src="{{ skins_url }}/images/nav.png" hspace="8" alt="" /></td>
+   <td>{{ lang.addnews['keywords'] }}:</td>
+   <td><textarea id="newsKeywords" name="keywords" cols="80"></textarea></td>
+  </tr>
+{% endif %}
+
+4) Добавление твитов вместе с новостями.
+Для добавления твитов требуется отметить чекбокс "Отправить в twitter?" в форме добавления новости.
+Содержимое твита берется из текстовой области "Текст для Twitter:" + при наличии в тексте (короткая+полная) ссылок на изображения они также прикреплются к твиту (до 4 изображений).

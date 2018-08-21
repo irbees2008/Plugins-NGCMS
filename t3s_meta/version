@@ -1,0 +1,13 @@
+;
+; Module definition
+;
+
+ID: t3s_meta
+Name: мета-теги
+Version: 0.1
+Acts: news_full
+File: t3s_meta.php
+Config: config.php
+Type: plugin
+Description: генерация метатегов согласно аудиту сеошника
+Author:  t3s

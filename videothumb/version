@@ -1,0 +1,15 @@
+;
+; Version description file for plugin @@ ngcms
+;
+
+ID: videothumb
+Name: Make video thumb
+Version: 0.1
+Acts: index, news, admin:mod:news
+File: videothumb.php
+Install: install.php
+Deinstall: uninstall.php
+Type: plugin
+Description: Превью-изображения с YouTube
+Author: Rostunov Sergey
+Author_URI: http://rostunov.com/

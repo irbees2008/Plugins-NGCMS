@@ -1,0 +1,8 @@
+ID: tblank
+Name: tblank
+Version: 1.0.0
+Acts: admin_header
+File: tblank.php
+Type: plugin
+Description: tblank.
+Author: irbees2008.

@@ -1,0 +1,14 @@
+.bbQuoteName { 
+  background:#6cadcd; 
+  color:#fff; 
+  line-height:28px; 
+  padding-left:15px; 
+  text-transform:uppercase; 
+} 
+.quoteMessage { 
+  border:1px solid #e5e1d9 !important; 
+  border-top:0 none !important; 
+  padding:15px 15px 15px 15px; 
+  background:#f2eee6 url(img/blue_arrow.png) no-repeat 90% top; 
+  font-style:italic; 
+} 

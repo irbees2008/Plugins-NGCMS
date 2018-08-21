@@ -1,0 +1,17 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+ 
+ID: adssearch1
+Name: Поиск по цене
+Version: 0.4
+Acts: ppages
+File: adssearch1.php
+Config: config.php
+Type: plugin
+Description: Поиск и сортировка новостей-обьявлений
+Author: t3s
+Author_URI: http://webamator.ru/
+Title: сортировка
+Information: Поиск и сортировка новостей-обьявлений
+Preinstall: no

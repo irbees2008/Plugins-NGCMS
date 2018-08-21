@@ -1,0 +1,11 @@
+ID: popular_services
+Name: Добавление ссылок в популярные Интернет сервисы
+Version: 0.10.4
+Acts: index 
+File: popular_services.php
+Type: plugin
+Description: Добавляет ссылки в такие сервисы как: Яндекс, Вконтакте, Live Journal, Buzz, Facebook, Mail.ru, Twitter, Blogger, LiveInternet
+Author: Necronominicon
+Title: Добавляет ссылки в такие сервисы как: Яндекс, Вконтакте, Live Journal, Buzz, Facebook, Mail.ru, Twitter, Blogger, LiveInternet
+Information: Добавляет ссылки в такие сервисы как: Яндекс, Вконтакте, Live Journal, Buzz, Facebook, Mail.ru, Twitter, Blogger, LiveInternet
+Preinstall: default_no

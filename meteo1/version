@@ -1,0 +1,16 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: meteo
+Name: Weather in the city
+Version: 0.01
+Acts: index
+File: meteo.php
+Config: config.php
+Type: widget
+Description: Информер погоды
+Author: stdex
+Author_URI: http://rostunov.com/
+Title: Популярные новости
+Information: Довольно простой Информер погоды. Погода берется из Майлрушного информера кешируется на сайте и обновляется каждый час.

@@ -1,0 +1,202 @@
+Плагин videothumb
+==============================================
+С помощью данного плагина Вы можете осуществлять создание превью-изображения с YouTube при добавлении новости
+
+Установка:
+1. Загрузить файлы плагина в директорию /engine/plugins/videothumb/
+
+2. Создать директорию /uploads/videothumb/ - в ней будут располагаться загруженные изображения.
+
+3. Внести изменения в шаблон добавления новости (/engine/skins/default/tpl/news/add.tpl):
+
+1) В нужном месте вставить код вывода формы плагина (например после ключевых слов):
+{% if (pluginIsActive('videothumb')) %}
+<tr>
+<td><img src="{{ skins_url }}/images/nav.png" hspace="8" alt="" /></td>
+<td>Превью с YouTube:</td>
+<td>{{plugin.videothumb_form}}</td>
+</tr>
+{% endif %}
+
+2) Вверху, перед <form name="DATA_tmp_storage" action="" id="DATA_tmp_storage"> вставить JS код:
+<script type="text/javascript">
+function videothumb() {
+
+    ajax({
+        url:"/engine/plugins/videothumb/video.php",
+        statbox:"videoThumb_response",
+        method:"POST",
+        data: {
+            url:document.getElementById("videoThumb_url").value,
+			vt_img:document.getElementById("vt_img").value,
+			vt_url:document.getElementById("vt_url").value,
+			title:document.getElementById("newsTitle").value
+        },
+        success: function(data) {
+		//alert(data);
+		  var data = JSON.parse(data);
+		
+		if (data.error) {
+            $("#videoThumb_response").html('<font color="red"><b>Ошибка: '+ data.error + ' </b></font>');
+			}
+		else {
+			$("#videoThumb_response").html('<font color="green"><b>Изображение загружено:</b></font><br/><img src="'+ data.image +'" width="320"/>');
+			$("#vt_img").val(data.image);
+			$("#vt_url").val(data.video);
+			approveMode(-1);
+			//var form = document.getElementById("postForm");
+			//form['mod'].value = "news";
+			//form.target = "_self";
+			//form.submit();
+			}
+        }
+    });
+
+}
+
+function XmlHttp()
+{
+var xmlhttp;
+try{xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");}
+catch(e)
+{
+ try {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");} 
+ catch (E) {xmlhttp = false;}
+}
+if (!xmlhttp && typeof XMLHttpRequest!='undefined')
+{
+ xmlhttp = new XMLHttpRequest();
+}
+  return xmlhttp;
+}
+ 
+function ajax(param)
+{
+                if (window.XMLHttpRequest) req = new XmlHttp();
+                method=(!param.method ? "POST" : param.method.toUpperCase());
+ 
+                if(method=="GET")
+                {
+                               send=null;
+                               param.url=param.url+"&ajax=true";
+                }
+                else
+                {
+                               send="";
+                               for (var i in param.data) send+= i+"="+param.data[i]+"&";
+                               send=send+"ajax=true";
+                }
+ 
+                req.open(method, param.url, true);
+                if(param.statbox)document.getElementById(param.statbox).innerHTML = '<img src="/engine/skins/default/images/loading.gif">';
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(send);
+                req.onreadystatechange = function()
+                {
+                               if (req.readyState == 4 && req.status == 200) //если ответ положительный
+                               {
+                                               if(param.success)param.success(req.responseText);
+                               }
+                }
+}
+</script> 
+
+4. Внести изменения в шаблон редактирования новости (/engine/skins/default/tpl/news/edit.tpl):
+
+1) В нужном месте вставить код вывода формы плагина (например после ключевых слов):
+{% if (pluginIsActive('videothumb')) %}
+<tr>
+<td><img src="{{ skins_url }}/images/nav.png" hspace="8" alt="" /></td>
+<td>Превью с YouTube:</td>
+<td>{{plugin.videothumb_form}}</td>
+</tr>
+{% endif %}
+
+2) Вверху, перед <form name="DATA_tmp_storage" action="" id="DATA_tmp_storage"> вставить JS код:
+<script type="text/javascript">
+function videothumb() {
+
+    ajax({
+        url:"/engine/plugins/videothumb/video.php",
+        statbox:"videoThumb_response",
+        method:"POST",
+        data: {
+            url:document.getElementById("videoThumb_url").value,
+			vt_img:document.getElementById("vt_img").value,
+			vt_url:document.getElementById("vt_url").value,
+			title:document.getElementById("newsTitle").value
+        },
+        success: function(data) {
+		//alert(data);
+		  var data = JSON.parse(data);
+		//  alert(data);
+		
+		if (data.error) {
+            $("#videoThumb_response").html('<font color="red"><b>Ошибка: '+ data.error + ' </b></font>');
+			}
+		else {
+			$("#videoThumb_response").html('<font color="green"><b>Изображение загружено:</b></font><br/><img src="'+ data.image +'" width="320"/>');
+			$("#vt_img").val(data.image);
+			$("#vt_url").val(data.video);
+			$("#outImg").hide();
+			var form = document.getElementById("postForm");
+			form['mod'].value = "news";
+			form.target = "_self";
+			form.submit();
+			}
+        }
+    });
+
+}
+
+function XmlHttp()
+{
+var xmlhttp;
+try{xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");}
+catch(e)
+{
+ try {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");} 
+ catch (E) {xmlhttp = false;}
+}
+if (!xmlhttp && typeof XMLHttpRequest!='undefined')
+{
+ xmlhttp = new XMLHttpRequest();
+}
+  return xmlhttp;
+}
+ 
+function ajax(param)
+{
+                if (window.XMLHttpRequest) req = new XmlHttp();
+                method=(!param.method ? "POST" : param.method.toUpperCase());
+ 
+                if(method=="GET")
+                {
+                               send=null;
+                               param.url=param.url+"&ajax=true";
+                }
+                else
+                {
+                               send="";
+                               for (var i in param.data) send+= i+"="+param.data[i]+"&";
+                               send=send+"ajax=true";
+                }
+ 
+                req.open(method, param.url, true);
+                if(param.statbox)document.getElementById(param.statbox).innerHTML = '<img src="/engine/skins/default/images/loading.gif">';
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(send);
+                req.onreadystatechange = function()
+                {
+                               if (req.readyState == 4 && req.status == 200) //если ответ положительный
+                               {
+                                               if(param.success)param.success(req.responseText);
+                               }
+                }
+}
+</script> 
+
+5. В шаблонах news.short.tpl и news.full.tpl станут доступны переменные:
+{{ p.videothumb.img.value }}
+{{ p.videothumb.img_src.value }}
+{{ p.videothumb.link.value }}

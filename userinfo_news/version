@@ -1,0 +1,13 @@
+ID: userinfo_news
+Name: Инфо о авторе новости
+Version: 0.1
+Acts: news_short, news_full
+File: userinfo_news.php
+Config: config.php
+Type: plugin
+Title: Вывод инфо о пользователе, который добавил новость
+Description: Вывод инфо о пользователе, который добавил новость
+Information: ВВывод инфо о пользователе, который добавил новость
+Author: Rostunov S U
+Author_URI: http://rostunov.com/
+preinstall: no

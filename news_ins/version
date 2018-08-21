@@ -1,0 +1,17 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+ 
+ID: news_ins
+Name: ¬ыборка новостей по запросу и вывод в статику
+Version: 0.01
+Acts: static
+File: news_ins.php
+Config: config.php
+Type: plugin
+Description: ¬ыборка новостей по запросу и вывод в статику
+Author: Rostunov S U
+Author_URI: http://rostunov.com/
+Title: ¬ыборка новостей по запросу
+Information: ¬ыборка новостей по запросу
+Preinstall: no

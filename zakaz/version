@@ -1,0 +1,16 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: zakaz
+Name: Заказ Запчастей
+Version: 0.01
+Acts: index,ppages
+File: zakaz.php
+Config: config.php
+Type: plugin
+Description: Форма заказа запчастей
+Author: CyberMama
+Author_URI: http://cybermamas.blogspot.com
+Title: Заказ Запчастей
+Information: Форма заказа запчастей
