@@ -1,0 +1,12 @@
+ID: canonical
+Name: Автодобавление тега canonical
+Version: 0.01
+Actions: news; news.php
+Config: config.php
+Type: plugin
+Title: Автодобавление тега canonical
+Description: Автодобавление тега canonical для предотвращения дублей
+Information: Автодобавление тега canonical для предотвращения дублей
+Author: Dzmitry Khadorkin (KhadeR)
+Author_URI: http://khadersg.com/me/
+preinstall: no

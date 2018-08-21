@@ -1,0 +1,15 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: social
+Name: Социальные закладки<br/>Social Bookmarks
+Version: 0.21
+Acts: news_full
+File: social.php
+Config: config.php
+Type: plugin
+Description: Генерирует и показывает ссылки на социальные сервисы<br/>Generate & Show links to social services
+Author: Dzmitry Khadorkin (KhadeR)
+Author_URI: http://khadersg.com/me/
+Preinstall: no
