@@ -1,0 +1,12 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: fish
+Name: Наполнение рыбой
+Version: 0.01
+Config: config.php
+Type: maintanance
+Description: Наполнение рыбой
+Author: CyberMama
+Author_URI: http://ngcms.ru/

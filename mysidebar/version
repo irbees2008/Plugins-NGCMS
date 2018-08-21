@@ -1,0 +1,13 @@
+;
+; Module definition
+;
+
+ID: mysidebar
+Name: сайдбар с доп. блоками
+Version: 0.1
+Acts: index 
+File: mysidebar.php
+Config: config.php
+Type: plugin
+Description: Вывод в сайдбаре информации из другого движка, в данном случае из каталога vkaragande
+Author:  t3s

@@ -1,0 +1,14 @@
+ID: blokmanager
+Name: Block manager
+Version: 0.01
+Actions: core; blokmanager.php
+Config: config.php
+Install: install.php
+Deinstall: uninstall.php
+Type: plugin
+Title: Отображение произвольных блоков на сайте
+Description: Управление блоками сайта
+Information: Позволяет редактировать часто изменяемые блоки на сайте.Обычно это реклама или счетчики
+Author: Ivan Litvinenko (Amarelius),CyberMama 
+Author_URI: http://arnit.com.ua/
+preinstall: no

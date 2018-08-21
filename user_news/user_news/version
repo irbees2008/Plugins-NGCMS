@@ -1,0 +1,13 @@
+;
+; Version description file for plugin @@ 2z project
+;
+
+ID: user_news
+Name: Users News
+Version: 0.1b
+Acts: index_post
+File: user_news.php
+Config: config.php
+Type: plugin
+Description: Новости пользователей
+Author: kt2k

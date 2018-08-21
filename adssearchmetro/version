@@ -1,0 +1,17 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+ 
+ID: adssearchmetro
+Name: Поиск по метро
+Version: 0.42
+Acts: ppages
+File: adssearchmetro.php
+Config: config.php
+Type: plugin
+Description: Поиск и сортировка по метро новостей-обьявлений
+Author: t3s
+Author_URI: http://webamator.ru/
+Title: Случайные новости
+Information: Поиск и сортировка по метро новостей-обьявлений
+Preinstall: no

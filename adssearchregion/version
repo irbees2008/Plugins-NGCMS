@@ -1,0 +1,17 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+ 
+ID: adssearchregion
+Name: Поиск региональных обьектов
+Version: 0.42
+Acts: ppages
+File: adssearchregion.php
+Config: config.php
+Type: plugin
+Description: Поиск и сортировка региональных новостей-обьявлений
+Author: t3s
+Author_URI: http://webamator.ru/
+Title: Поиск региональных обьектов
+Information: Поиск и сортировка региональных новостей-обьявлений
+Preinstall: no

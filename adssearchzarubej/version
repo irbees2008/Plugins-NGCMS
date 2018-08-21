@@ -1,0 +1,17 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+ 
+ID: adssearchzarubej
+Name: Поиск зарубежных обьектов
+Version: 0.42
+Acts: ppages
+File: adssearchzarubej.php
+Config: config.php
+Type: plugin
+Description: Поиск и сортировка зарубежных новостей-обьявлений
+Author: t3s
+Author_URI: http://webamator.ru/
+Title: Поиск зарубежных обьектов
+Information: Поиск и сортировка зарубежных новостей-обьявлений
+Preinstall: no

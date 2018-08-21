@@ -1,0 +1,15 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: cs_emulation
+Name: Cоревнования по CS
+Version: 0.02
+Acts: index, news, static
+File: cs_emulation.php
+Config: config.php
+Install: install.php
+Deinstall: uninstall.php
+Type: plugin
+Description: Вывод результатов соревнований
+Author: insider (ICQ: 577070)

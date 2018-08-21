@@ -1,0 +1,13 @@
+ID: stats
+Name: Статистика сайта
+Version: 0.0.1
+Acts: index 
+File: stats.php
+Type: plugin
+Config: config.php
+Description: Вывод количественной статистики сайта <br>количество новостей, пользователей, страниц и т.д.
+Author: Necronominicon
+Title: Вывод количественной статистики сайта
+Information: Вывод количественной статистики сайта
+Preinstall: default_no
+Author_URI: http://www.ax2style.com

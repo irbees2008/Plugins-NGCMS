@@ -1,0 +1,11 @@
+span.rating_zero {
+	color: #000000;
+}
+
+span.rating_plus {
+	color: #7FFF00;
+}
+
+span.rating_less {
+	color: #ff0000;
+}

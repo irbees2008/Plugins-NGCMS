@@ -1,0 +1,33 @@
+# =========================================================================== #
+# NG CMS // Плагины // Мероприятия		                                      #
+# =========================================================================== #
+
+Вывод блока фильтра и блока актуальных событий (Шаблоны /plugins/events/tpl/filter_main.tpl и /plugins/events/tpl/list_result_filter.tpl):
+{{ callPlugin('events.filter') }}
+
+Вывод блока архивных событий (Шаблоны /plugins/events/tpl/archive_main.tpl и /plugins/events/tpl/flist_result_archive.tpl):
+{{ callPlugin('events.archive') }}
+
+Вывод блока добавления события (Шаблон /plugins/events/tpl/send_events_main.tpl):
+{{ callPlugin('events.send') }}
+
+Вывод блока собственных событий (Шаблон /plugins/events/tpl/block/block_my_last.tpl):
+{% if (global.flags.isLogged) %}
+	{{ callPlugin('events.show', {'mode' : 'last', 'toU': '1', 'pagination': '1' , 'expired': '', 'template': 'block_my_last'}) }}
+{% endif %}
+
+Вывод блока собственных событий (архив): (Шаблон /plugins/events/tpl/block/block_my_archive.tpl):
+{% if (global.flags.isLogged) %}
+	{{ callPlugin('events.show', {'mode' : 'last', 'toU': '1', 'pagination': '1' , 'expired': '1', 'template': 'block_my_archive'}) }}
+{% endif %}
+
+Вывод дерева категорий:
+{{ callPlugin('events.show_catz_tree') }}
+
+/events - главная плагина. (Шаблон /plugins/events/tpl/events.tpl)
+/events/cat/X/ - страницы категорий. (Шаблон /plugins/events/tpl/events.tpl)
+/events/X/ - страницы события. (Шаблон /plugins/events/tpl/show_events.tpl)
+/events/search/ - поиск по событиям. (Шаблон /plugins/events/tpl/search_events.tpl)
+/events/edit/X/ - страница - редактирования собятия (доступна только зарегистрированным).  (Шаблон/plugins/events/tpl/edit_events.tpl)
+/events/unpublish/X/ - страница - отправки события в архив (доступна только зарегистрированным).
+/events/del/X/ - страница - удаления события (доступна только зарегистрированным).

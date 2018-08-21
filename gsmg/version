@@ -1,0 +1,16 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: gsmg
+Name: Google SiteMap Generator
+Version: 0.09
+Acts: ppages
+File: gsmg.php
+Config: config.php
+Type: plugin
+Description: Генерация карты сайта для Google
+Author: Vitaly A. Ponomarev
+Author_URI: http://ngcms.ru/
+Title: Генератор Google SiteMap
+Information: Позволяет создавать SiteMap для вашего сайта

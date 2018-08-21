@@ -1,0 +1,19 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: who_online
+Name: Кто онлайн
+Version: 0.3
+Acts: index 
+File: who_online.php
+Install: install.php
+Deinstall: uninstall.php
+Config: config.php
+Type: widget
+Description: Кто сейчас на сайте
+Author: Alexey N. Zhukov (Wolverine)
+Author_URI: http://digitalplace.ru/
+Title: Кто онлайн
+Information: Кто сейчас на сайте
+Preinstall: default_no

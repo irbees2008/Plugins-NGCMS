@@ -1,0 +1,18 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: similar
+Name: Похожие новости
+Version: 0.07
+Acts: index,ppages,news
+File: similar.php
+Config: config.php
+Install: install.php
+Deinstall: deinstall.php
+Type: plugin
+Description: Перелинковка новостей по критериям похожести
+Author: Vitaly A. Ponomarev
+Author_URI: http://2lib.ru
+Title: Похожие новости
+Information: Позволяет проводить перелинковку новостей на базе плагина <b>tags</b> (Облако тегов)

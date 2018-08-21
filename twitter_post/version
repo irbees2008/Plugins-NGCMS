@@ -1,0 +1,15 @@
+;
+; Version description file for plugin @@ ngcms
+;
+
+ID: twitter_post
+Name: Post on Twitter
+Version: 0.1
+Acts: admin:mod:news, admin_header
+File: twitter_post.php
+Config: config.php
+Type: plugin
+Description: Post on Twitter
+Author: Rostunov S U
+Author_URI: http://rostunov.com/
+URI: http://no_url.com/

@@ -1,0 +1,10 @@
+ID: redir
+Name: redirekt
+Version: 1.0.0
+Acts: index, news, ppages
+File: redir.php
+Title: Страница переадресации внешних ссылок
+Type: plugin
+Description: redir.
+Author: irbees2008.
+Author_URI: http://ngcmshak.ru/

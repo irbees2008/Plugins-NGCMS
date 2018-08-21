@@ -1,0 +1,18 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: hsgallery
+Name: HighSlide Preview and Image Gallery
+Version: 1.0
+Acts: index
+File: gallery.php
+Config: config.php
+Type: plugin
+Description: Highslide превью и Создание фотогалерей\слайдшоу на статических страницах из каталога с фото
+Author: CyberMama
+Author_URI: http://cybermamas.blogspot.com/
+Title: Галерея
+Information:Highslide превью и Создание фотогалерей\слайдшоу на статических страницах из каталога с фото
+Preinstall: default_no
+Preinstall_vars: viewmode="3"; globalmode="1"; cache="1"; cacheExpire="3600";

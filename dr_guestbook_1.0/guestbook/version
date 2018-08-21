@@ -1,0 +1,19 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: dr_guestbook
+Name: Гостевая книга
+Version: 1.0
+Acts: index
+File: guestbook.php
+Config: config.php
+Install: install.php
+Deinstall: deinstall.php
+Type: plugin
+Description: Гостевая книга сайта
+Author: Styler
+Author_URI: http://ngcms.ru/forum/profile.php?id=7
+Title: Гостевая книга
+Information: Плагин позволяет организовать на сайте гостевую книгу.
+Preinstall: default_no

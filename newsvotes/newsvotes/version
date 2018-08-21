@@ -1,0 +1,18 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: newsvotes
+Name: Опрос в новостях
+Version: 0.1
+Acts: index,news,ppages,admin:mod:addnews,admin:mod:editnews
+File: newsvotes.php
+Install: install.php
+Deinstall: deinstall.php
+Type: plugin
+Description: Создание опросов в новостях.
+Author: Styler
+Author_URI: http://ngcms.ru/
+URI: http://google.ru/
+Title: Опрос в новостях
+Information: Позволяет организовывать проведение опросов в новостях.

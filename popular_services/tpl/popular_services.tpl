@@ -1,0 +1,1 @@
+<div class='twit'><ul><li>{vkontakte}</li><li>{buzz}</li><li>{yandex}</li><li>{mailru}</li><li>{facebook}</li><li>{gg}</li><li>{friendlent}</li><li>{blogger}</li><li>{twitter}</li></ul></div>

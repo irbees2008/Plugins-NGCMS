@@ -1,0 +1,12 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: advego_import
+Name: import advego atom
+Version: 0.1
+Config: config.php
+Type: maintanance
+Description: Плагин импортирует контент с advego.ru
+Author: Rostunov Sergey
+Author_URI: http://rostunov.com/
