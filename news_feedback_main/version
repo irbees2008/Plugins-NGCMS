@@ -1,0 +1,15 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: news_feedback
+Name: Обратная связь!
+Version: 0.1
+Actions: index, rpc; news_feedback.php
+Config: config.php
+Type: plugin
+Description: Обратная связь в новости
+Author: Rostunov Sergey
+Author_URI: http://rostunov.com
+Title: 
+Information: 
