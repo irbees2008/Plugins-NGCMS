@@ -1,1 +1,0 @@
-<li><a href="{topic_link}">{topic_name} <span>{topic_data}</span></a></li>

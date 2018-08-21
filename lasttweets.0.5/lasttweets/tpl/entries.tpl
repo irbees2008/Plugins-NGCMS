@@ -1,1 +1,0 @@
-&raquo; {tweet}<br /><noindex><a href="{link}" rel="nofollow" title="{time}">{time}</a></noindex><br /><br />

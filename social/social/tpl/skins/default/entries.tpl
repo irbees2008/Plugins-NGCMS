@@ -1,1 +1,0 @@
-<li><a rel="nofollow" target="_blank" href="{url}" title="{desc}">[img]<img src="{img}" title="{desc}" alt="{title}" />[/img][no-img]sdasd[/no-img]</a></li>
