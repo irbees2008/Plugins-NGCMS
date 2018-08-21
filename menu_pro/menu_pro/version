@@ -1,0 +1,15 @@
+ID: menu_pro
+Name: Менеджер меню
+Version: 0.01
+Actions: index; menu_pro.php
+Actions: rpc; menu_pro_ajax.php
+Config: config.php
+Install: install.php
+Deinstall: uninstall.php
+Type: plugin
+Title: Отображение меню
+Description: Отображение меню
+Information: Отображение меню
+Author: Ivan Litvinenko (Amarelius)
+Author_URI: http://arnit.com.ua/
+preinstall: no

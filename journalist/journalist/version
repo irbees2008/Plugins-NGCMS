@@ -1,0 +1,14 @@
+;
+; Version description file for plugin @@ Next Generation CMS
+;
+
+ID: journalist
+Name: journalist
+Version: 1.3
+Acts: ppages
+File: journalist.php
+Config: config.php
+Type: plugin
+Title: Cтатистика журналистов
+Information: Плагин выводит информацию о работе журналистов
+Preinstall: no
