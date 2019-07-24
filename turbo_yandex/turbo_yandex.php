@@ -150,7 +150,8 @@ function plugin_turbo_yandex_generate($catname = ''){
 			$masterCategoryName = $catList[0];
 
 
-		$output .= "  <item turbo="true">\n<turbo:content>\n";
+		$output .= "  <item turbo="true">\n";
+		$output .= "  <turbo:content>\n";
 		$output .= "   <title><![CDATA[".($twigString->render($newsTitleFormat, array('siteTitle' => $config['home_title'], 'newsTitle' => $row['title'], 'masterCategoryName' => $masterCategoryName)))."]]></title>\n";
 		$output .= "   <link><![CDATA[".newsGenerateLink($row, false, 0, true)."]]></link>\n";
 		$output .= "   <pubDate>".gmstrftime('%a, %d %b %Y %H:%M:%S GMT',$row['postdate'])."</pubDate>\n";
@@ -164,7 +165,8 @@ function plugin_turbo_yandex_generate($catname = ''){
 
 		$output .= "   <category>".GetCategories($row['catid'], true)."</category>\n";
 		$output .= "   <guid isPermaLink=\"false\">".home."?id=".$row['id']."</guid>\n";
-		$output .= "  </turbo:content>\n</item>\n";
+		$output .= "  </turbo:content>\n";
+		$output .= "  </item>\n";
 	}
 	setlocale(LC_TIME,$old_locale);
 	$output .= " </channel>\n</rss>\n";
