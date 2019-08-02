@@ -10,10 +10,10 @@ add_act('index', 'news_feedback_form');
 function news_feedback_form($params) {
 	global $mysql, $twig, $config, $template;
 
-		@session_register('captcha');
+		//@session_register('captcha');
 		$_SESSION['captcha'] = mt_rand(00000, 99999);
 
-		$template['vars']['plugin_news_feedback'] = show_feedback();	
+		$template['vars']['plugin_news_feedback'] = show_feedback();
 }
 
 /*
@@ -25,7 +25,7 @@ class ShowFeedback_NewsFilter extends NewsFilter {
 		$_SESSION['captcha'] = mt_rand(00000, 99999);
 
 		$tvars['vars']['plugin_news_feedback'] = show_feedback($SQLnews);
-		
+
 	}
 }
 */
@@ -33,14 +33,14 @@ class ShowFeedback_NewsFilter extends NewsFilter {
 function show_feedback()
 {
 global $tpl, $SYSTEM_FLAGS, $twig, $config, $parse, $userROW;
-	
+
 	$tpath = locatePluginTemplates(array('news_feedback'), 'news_feedback', pluginGetVariable('news_feedback', 'localsource'));
 	$xt = $twig->loadTemplate($tpath['news_feedback'].'news_feedback.tpl');
 
 	$tVars = array(
 			'act' => home."/engine/rpc.php?methodName=news_feedback_add"
 			);
-	
+
 	$output = $xt->render($tVars);
 
 	return $output;
@@ -67,23 +67,23 @@ global $tpl, $template, $twig, $SYSTEM_FLAGS, $config, $userROW, $mysql;
 			{
 				$error_text[] = 'Вы не заполнили имя!';
 			}
-			
+
 			if(empty($message))
 			{
 				$error_text[] = 'Вы не заполнили сообщение!';
 			}
-			
+
 			if(empty($phone))
 			{
 				$error_text[] = 'Вы не заполнили телефон!';
 			}
-					
-			if (!$mcode || ($_SESSION['captcha'] != $mcode)) 
+
+			if (!$mcode || ($_SESSION['captcha'] != $mcode))
 			{
 				$error_text[] = "Проверочный код введен неправильно!".$mcode;
-			}		
+			}
 			//$_SESSION['captcha'] = rand(00000, 99999);
-			
+
 			if( empty($error_text) )
 			{
 
@@ -100,21 +100,21 @@ global $tpl, $template, $twig, $SYSTEM_FLAGS, $config, $userROW, $mysql;
 						'message' => $message,
 						'datetime' => time()
 						);
-				
+
 					$mailBody = $xt->render($tVars);
 					$mailSubject = "Пришло сообщение по обратной связи";
-				
+
 					sendEmailMessage($row['mail'], $mailSubject, $mailBody, $filename = false, $mail_from = false, $ctype = 'text/html');
 				}
 
-				
+
 				$results = array(
 				'feedback' => 100,
 				'feedback_text' => iconv('Windows-1251', 'UTF-8','Ваше сообщение отправленно')
 				);
 //				goto endFeedbackCheck;
 			}
-			
+
 			if (!empty($error_text))
 			{
 				$results = array(
@@ -125,9 +125,9 @@ global $tpl, $template, $twig, $SYSTEM_FLAGS, $config, $userROW, $mysql;
 			}
 
 		}
-	
+
 //	endFeedbackCheck:
-	
+
 	// Scan incoming params
 	if (!is_array($params)) {
 		return array('status' => 0, 'errorCode' => 999, 'errorText' => 'Wrong params type');
@@ -140,7 +140,7 @@ global $tpl, $template, $twig, $SYSTEM_FLAGS, $config, $userROW, $mysql;
 function captcha_feedback($params)
 {
 global $tpl, $template, $twig, $SYSTEM_FLAGS, $userROW, $mysql;
-		
+
 	// Prepare basic reply array
 		$results = array();
 
@@ -148,18 +148,18 @@ global $tpl, $template, $twig, $SYSTEM_FLAGS, $userROW, $mysql;
 		if ( isset($params['mcode']) ) {
 
 			$mcode = secure_html(convert(trim($params['mcode'])));
-					
-			if (!$mcode || ($_SESSION['captcha'] != $mcode)) 
+
+			if (!$mcode || ($_SESSION['captcha'] != $mcode))
 			{
 				$results['feedback_captcha'] = 2;
 			}
 			else
 			{
 				$results['feedback_captcha'] = 100;
-			}			
+			}
 
 		}
-	
+
 
 	if (!is_array($params)) {
 		return array('status' => 0, 'errorCode' => 999, 'errorText' => 'Wrong params type');
