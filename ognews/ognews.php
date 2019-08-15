@@ -18,15 +18,15 @@ class OGNEWSNewsFilter extends NewsFilter {
                     
                     register_htmlvar('plain','<meta property="og:type" content="article">');
                     register_htmlvar('plain','<meta property="og:url" content="'.home.newsGenerateLink($SQLnews).'">');
-                    register_htmlvar('plain','<meta property="og:site_name" content="'.$config["home_title"].'">');
-                    register_htmlvar('plain','<meta property="og:title" content="'.$SQLnews["title"].'">');
-                    register_htmlvar('plain','<meta property="og:description" content="'.$SQLnews['description'].'">');
+                    register_htmlvar('plain','<meta property="og:site_name" content="'.secure_html($config["home_title"]).'">');
+                    register_htmlvar('plain','<meta property="og:title" content="'.secure_html($SQLnews["title"]).'">');
+                    register_htmlvar('plain','<meta property="og:description" content="'.secure_html($SQLnews['description']).'">');
                     /*
                     register_htmlvar('plain','<meta property="og:description" content="'.substr(strip_tags(stripBBCode($SQLnews["content"])), 0, 1000).'">');
                     */
                     register_htmlvar('plain','<meta property="article:author" content="'.home.$alink.'">');
                     register_htmlvar('plain','<meta property="article:section" content="'.explode(',',strip_tags(@GetCategories($SQLnews['catid'])))[0].'">');
-                    register_htmlvar('plain','<meta property="article:tag" content="'.$SQLnews['keywords'].'">');
+                    register_htmlvar('plain','<meta property="article:tag" content="'.secure_html($SQLnews['keywords']).'">');
                     
                     if($tvars['vars']['news']['embed']['imgCount'] > 0) {
                         foreach($tvars['vars']['news']['embed']['images'] as $img_item) {
