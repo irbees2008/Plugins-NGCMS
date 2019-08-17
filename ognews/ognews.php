@@ -14,7 +14,7 @@ class OGNEWSNewsFilter extends NewsFilter {
                     register_htmlvar('plain','<meta property="og:url" content="'.home.newsGenerateLink($SQLnews).'">');
                     register_htmlvar('plain','<meta property="og:site_name" content="'.secure_html($config["home_title"]).'">');
                     register_htmlvar('plain','<meta property="og:title" content="'.secure_html(substr(strip_tags($SQLnews["title"]), 0, 50)).'">');
-                    register_htmlvar('plain','<meta property="og:description" content="'.secure_html(substr(strip_tags(stripBBCode($SQLnews['description'])), 0, 220)).'">');
+                    register_htmlvar('plain','<meta property="og:description" content="'.secure_html(substr(strip_tags(stripBBCode($SQLnews['description'])), 0, 220)).'">')
                     /*
                     register_htmlvar('plain','<meta property="og:description" content="'.secure_html(substr(strip_tags(stripBBCode($SQLnews["content"])), 0, 220)).'">');
                     */
