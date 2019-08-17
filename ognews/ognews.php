@@ -34,6 +34,17 @@ class OGNEWSNewsFilter extends NewsFilter {
                             register_htmlvar('plain','<meta property="og:image" content="'.home.'/uploads/dsn/'.$img_item['folder'].'/'.$img_item['name'].'" />');
                         }
                     }
+                    register_htmlvar('plain','<meta property="twitter:card" content="summary_large_image">');
+                    register_htmlvar('plain','<meta property="twitter:title" content="'.secure_html(substr(strip_tags($SQLnews["title"]), 0, 50)).'">');
+                    register_htmlvar('plain','<meta property="twitter:description" content="'.secure_html(substr(strip_tags(stripBBCode($SQLnews['description'])), 0, 220)).'">');
+                    if(!empty($SQLnews['#images'])) {
+                        foreach($SQLnews['#images'] as $img_item) {
+                            register_htmlvar('plain','<meta property="twitter:image:src" content="'.home.'/uploads/dsn/'.$img_item['folder'].'/'.$img_item['name'].'" />');
+                        }
+                    }
+                    register_htmlvar('plain','<meta property="twitter:url" content="'.home.newsGenerateLink($SQLnews).'">');
+                    register_htmlvar('plain','<meta property="twitter:domain" content="'.home.'">');
+                    register_htmlvar('plain','<meta property="twitter:site" content="'.secure_html($config["home_title"]).'">');
                 }
             }
         }
