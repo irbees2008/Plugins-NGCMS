@@ -150,14 +150,12 @@ function plugin_turbo_yandex_generate($catname = ''){
 			$masterCategoryName = $catList[0];
 
 
-		$output .= "  <item turbo="true">\n";
-		$output .= "  <turbo:content>\n";
-		$output .= "   <title><![CDATA[".($twigString->render($newsTitleFormat, array('siteTitle' => $config['home_title'], 'newsTitle' => $row['title'], 'masterCategoryName' => $masterCategoryName)))."]]></title>\n";
-		$output .= "   <link><![CDATA[".newsGenerateLink($row, false, 0, true)."]]></link>\n";
+		$output .= "  <item turbo='true'>\n";
+		$output .= "   <title>".($twigString->render($newsTitleFormat, array('siteTitle' => $config['home_title'], 'newsTitle' => $row['title'], 'masterCategoryName' => $masterCategoryName)))."</title>\n";
+		$output .= "   <link>".newsGenerateLink($row, false, 0, true)."</link>\n";
 		$output .= "   <pubDate>".gmstrftime('%a, %d %b %Y %H:%M:%S GMT',$row['postdate'])."</pubDate>\n";
-		$output .= "   <yandex:full-text><![CDATA[".(pluginGetVariable('turbo_yandex','full_format')?$newsVars['short-story'].' ':'')"]]></yandex:full-text>\n";
-
-		$output .= "   <description><![CDATA[".$newsVars['short-story']."]]></description>\n";
+		$output .= "  <turbo:content>\n";
+		$output .= "   <description>".$newsVars['short-story']."</description>\n";
 
 		// Generate list of enclosures
 		$output .= join("\n", $enclosureList);
@@ -165,7 +163,7 @@ function plugin_turbo_yandex_generate($catname = ''){
 
 		$output .= "   <category>".GetCategories($row['catid'], true)."</category>\n";
 		$output .= "   <guid isPermaLink=\"false\">".home."?id=".$row['id']."</guid>\n";
-		$output .= "  </turbo:content>\n";
+		$output .= "</turbo:content>\n";
 		$output .= "  </item>\n";
 	}
 	setlocale(LC_TIME,$old_locale);
@@ -190,31 +188,21 @@ function plugin_turbo_yandex_mk_header($xcat) {
 
 	// Generate RSS header
 	$line = '<?xml version="1.0" encoding="windows-1251"?>'."\n";
-	$line.= ' <rss xmlns:yandex="http://news.yandex.ru"	xmlns:media="http://search.yahoo.com/mrss/"xmlns:turbo="http://turbo.yandex.ru" version="2.0">'."\n";
+	$line.= ' <rss xmlns:yandex="http://news.yandex.ru"
+	xmlns:media="http://search.yahoo.com/mrss/"
+	xmlns:turbo="http://turbo.yandex.ru"
+	version="2.0">'."\n";
 	$line.= " <channel>\n";
 
 	// Channel title
-	$line.= "  <title><![CDATA[".($twigString->render($feedTitleFormat, array('siteTitle' => $config['home_title'])))."]]></title>\n";
+	$line.= "  <title>".($twigString->render($feedTitleFormat, array('siteTitle' => $config['home_title'])))."</title>\n";
 
 	// LINK
-	$line.= "  <link><![CDATA[".$config['home_url']."]]></link>\n";
+	$line.= "  <link>".$config['home_url']."</link>\n";
 
 	// Description
-	$line.= "  <description><![CDATA[".$config['description']."]]></description>\n";
+	$line.= "  <description>".$config['description']."</description>\n";
 
-	// Image
-	$imgInfo = array(
-		'url'	=> pluginGetVariable('turbo_yandex','feed_image_url')?pluginGetVariable('turbo_yandex','feed_image_url'):'http://ngcms.ru/templates/ngcms2/images/logo.png',
-		'title'	=> pluginGetVariable('turbo_yandex','feed_image_title')?pluginGetVariable('turbo_yandex','feed_image_title'):'Next generation CMS demo RSS feed',
-		'link'	=> pluginGetVariable('turbo_yandex','feed_image_link')?pluginGetVariable('turbo_yandex','feed_image_link'):'http://ngcms.ru/',
-	);
 
-	$line.= " <image>\n";
-	$line.= "  <url>".$imgInfo['url']."</url>\n";
-	$line.= "  <title><![CDATA[".$imgInfo['title']."]]></title>\n";
-	$line.= "  <link>".$imgInfo['link']."</link>\n";
-	$line.= " </image>\n";
-
-	$line.= "  <generator><![CDATA[Plugin turbo_yandex (0.01) // Next Generation CMS (".engineVersion.")]]></generator>\n";
 	return $line;
 }
