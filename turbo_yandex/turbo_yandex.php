@@ -131,7 +131,7 @@ function plugin_turbo_yandex_generate($catname = ''){
 		$output .= join("\n", $enclosureList);
 		if (count($enclosureList)) $output .= "\n</header>\n";
 		$output .= "   <p>".substr(strip_tags($newsVars['short-story']), 0,350)."</p>\n";
-		//$output .= "   <a href='".newsGenerateLink($row, false, 0, true)."' data-turbo='false'>ЧИТАТЬ</a>\n";
+		//$output .= "   <a href='".newsGenerateLink($row, false, 0, true)."' data-turbo='false'>×ÈÒÀÒÜ</a>\n";
 		$output .= "]]>\n";
 		$output .= "</turbo:content>\n ";
 		$output .= "</item>\n";
