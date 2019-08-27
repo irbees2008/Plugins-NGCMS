@@ -41,7 +41,7 @@ function plugin_turbo_yandex_generate($catname = ''){
 	$output = plugin_turbo_yandex_mk_header($xcat);
 	$maxAge = pluginGetVariable('turbo_yandex','news_age');
 	$delay = intval(pluginGetVariable('turbo_yandex', 'delay'));
-	if ((!is_numeric($maxAge)) || ($maxAge<0) || ($maxAge>100)) { $maxAge = 10; }
+	if ((!is_numeric($maxAge)) || ($maxAge<0) || ($maxAge>1100)) { $maxAge = 1110; }
 	$old_locale = setlocale(LC_TIME,0);
 	setlocale(LC_TIME,'en_EN');
 	$query = '';
@@ -93,11 +93,11 @@ function plugin_turbo_yandex_generate($catname = ''){
 				if ($enclosureIsImages) {
 					// images
 					if (isset($encImages[$row['id']])) {
-						$enclosureList []= '   <enclosure url="'.($encImages[$row['id']]['storage']?$config['attach_url']:$config['images_url']).'/'.$encImages[$row['id']]['folder'].'/'.$encImages[$row['id']]['name'].'" />';
+						$enclosureList []= '   <figure>	<img src="'.($encImages[$row['id']]['storage']?$config['attach_url']:$config['images_url']).'/'.$encImages[$row['id']]['folder'].'/'.$encImages[$row['id']]['name'].'" /></figure>';
 					}
 				} else {
 					// text
-					$enclosureList []= '   <enclosure url="'.$xfd[pluginGetVariable('turbo_yandex','xfEnclosure')].'" />';
+					$enclosureList []= '   <figure>	<img src="'.$xfd[pluginGetVariable('turbo_yandex','xfEnclosure')].'" /></figure>';
 				}
 			}
 		}
@@ -106,7 +106,7 @@ function plugin_turbo_yandex_generate($catname = ''){
 			foreach ($newsVars['news']['embed']['images'] as $url) {
 				// Check for absolute link
 				if (!preg_match('#^http(s{0,1})\:\/\/#', $url)) $url = home . $url;
-				$enclosureList []= '   <enclosure url="'.$url.'" />';
+				$enclosureList []= '   <figure>	<img src="'.$url.'" /></figure>';
 			}
 		}
 		// Calculate news category list
@@ -119,20 +119,29 @@ function plugin_turbo_yandex_generate($catname = ''){
 		$masterCategoryName = '';
 		if (count($catList))
 			$masterCategoryName = $catList[0];
-		$output .= "   <title>".($twigString->render($newsTitleFormat, array('siteTitle' => $config['home_title'], 'newsTitle' => $row['title'], 'masterCategoryName' => $masterCategoryName)))."</title>\n";
-		$output .= "   <link>".newsGenerateLink($row, false, 0, true)."</link>\n";
+
+		$output .= "  <item turbo='true'>\n";
+		$output .= "  <link>".newsGenerateLink($row, false, 0, true)."</link>\n";
 		$output .= "   <pubDate>".gmstrftime('%a, %d %b %Y %H:%M:%S GMT',$row['postdate'])."</pubDate>\n";
-		$output .= "  <turbo:content>\n";
-		$output .= "   <description>".$newsVars['short-story']."</description>\n";
-		// Generate list of enclosures
+		$output .= "  <turbo:content> \n";
+		$output .= "  <![CDATA[\n";
+		$output .= "  <header>\n";
+		$output .= "   <h1>".$row['title']."</h1>\n";
+		//$output .= "   <h2>".GetCategories($row['catid'], true)."</h2>\n";
 		$output .= join("\n", $enclosureList);
-		if (count($enclosureList)) $output .= "\n";
-		$output .= "   <category>".GetCategories($row['catid'], true)."</category>\n";
-		$output .= "   <guid isPermaLink=\"false\">".home."?id=".$row['id']."</guid>\n";
-		$output .= "</turbo:content>\n";
+		if (count($enclosureList)) $output .= "\n</header>\n";
+		$output .= "   <p>".substr(strip_tags($newsVars['short-story']), 0,350)."</p>\n";
+		//$output .= "   <a href='".newsGenerateLink($row, false, 0, true)."' data-turbo='false'>×ÈÒÀÒÜ</a>\n";
+		$output .= "]]>\n";
+		$output .= "</turbo:content>\n ";
+		$output .= "</item>\n";
 	}
 	setlocale(LC_TIME,$old_locale);
-	$output .= " </item>\n</channel>\n</rss>\n";
+	//$output .= "]]>\n";
+	//$output .= "</turbo:content>\n ";
+	//$output .= "</item>\n";
+	$output .= "</channel>\n";
+	$output .= "</rss>\n";
 	// Print output
 	print $output;
 	if (pluginGetVariable('turbo_yandex','cache')) {
@@ -145,20 +154,24 @@ function plugin_turbo_yandex_mk_header($xcat) {
 	$twigString = new Twig_Environment($twigStringLoader);
 	$feedTitleFormat = pluginGetVariable('turbo_yandex', 'feed_title')?pluginGetVariable('turbo_yandex', 'feed_title'):'{{ siteTitle }}';
 	// Generate RSS header
-	$line = '<?xml version="1.0" encoding="utf-8"?>'."\n";
+	$line = '<?xml version="1.0" encoding="windows-1251"?>'."\n";
 	$line.= ' <rss xmlns:yandex="http://news.yandex.ru"
 	xmlns:media="http://search.yahoo.com/mrss/"
 	xmlns:turbo="http://turbo.yandex.ru"
 	version="2.0">'."\n";
 	$line.= " <channel>\n";
 	// Channel title
-	$line.= "  <title>".($twigString->render($feedTitleFormat, array('siteTitle' => $config['home_title'])))."</title>\n";
+	$line.= "  <title>".$config['home_title']."</title>\n";
 	// LINK
 	$line.= "  <link>".$config['home_url']."</link>\n";
 	// Description
 	$line.= "  <description>".$config['description']."</description>\n";
     // Description
-	$line.= "  <item turbo='true'>\n";
-	$line.= "<link>".generateLink('news', 'main', array(), array(), false, true)."</link>\n";
+	//$line.= "  <item turbo='true'>\n";
+	//$line.= "  <link>".generateLink('news', 'main', array(), array(), false, true)."</link>\n";
+	//$line.= "  <turbo:content> \n";
+	//$line.= " <![CDATA[\n";
+
+
 	return $line;
 }
