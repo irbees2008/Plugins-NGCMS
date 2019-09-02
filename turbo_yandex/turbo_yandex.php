@@ -119,7 +119,6 @@ function plugin_turbo_yandex_generate($catname = ''){
 		$masterCategoryName = '';
 		if (count($catList))
 			$masterCategoryName = $catList[0];
-
 		$output .= "  <item turbo='true'>\n";
 		$output .= "  <link>".newsGenerateLink($row, false, 0, true)."</link>\n";
 		$output .= "   <pubDate>".gmstrftime('%a, %d %b %Y %H:%M:%S GMT',$row['postdate'])."</pubDate>\n";
@@ -127,19 +126,14 @@ function plugin_turbo_yandex_generate($catname = ''){
 		$output .= "  <![CDATA[\n";
 		$output .= "  <header>\n";
 		$output .= "   <h1>".$row['title']."</h1>\n";
-		//$output .= "   <h2>".GetCategories($row['catid'], true)."</h2>\n";
 		$output .= join("\n", $enclosureList);
 		if (count($enclosureList)) $output .= "\n</header>\n";
 		$output .= "   <p>".substr(strip_tags($newsVars['short-story']), 0,350)."</p>\n";
-		//$output .= "   <a href='".newsGenerateLink($row, false, 0, true)."' data-turbo='false'>×ÈÒÀÒÜ</a>\n";
 		$output .= "]]>\n";
 		$output .= "</turbo:content>\n ";
 		$output .= "</item>\n";
 	}
 	setlocale(LC_TIME,$old_locale);
-	//$output .= "]]>\n";
-	//$output .= "</turbo:content>\n ";
-	//$output .= "</item>\n";
 	$output .= "</channel>\n";
 	$output .= "</rss>\n";
 	// Print output
@@ -155,23 +149,15 @@ function plugin_turbo_yandex_mk_header($xcat) {
 	$feedTitleFormat = pluginGetVariable('turbo_yandex', 'feed_title')?pluginGetVariable('turbo_yandex', 'feed_title'):'{{ siteTitle }}';
 	// Generate RSS header
 	$line = '<?xml version="1.0" encoding="windows-1251"?>'."\n";
-	$line.= ' <rss xmlns:yandex="http://news.yandex.ru"
-	xmlns:media="http://search.yahoo.com/mrss/"
-	xmlns:turbo="http://turbo.yandex.ru"
-	version="2.0">'."\n";
+$line.= ' <rss xmlns:yandex="http://news.yandex.ru" xmlns:media="http://search.yahoo.com/mrss/"
+	xmlns:turbo="http://turbo.yandex.ru" version="2.0">'."\n";
 	$line.= " <channel>\n";
-	// Channel title
-	$line.= "  <title>".$config['home_title']."</title>\n";
-	// LINK
-	$line.= "  <link>".$config['home_url']."</link>\n";
-	// Description
-	$line.= "  <description>".$config['description']."</description>\n";
-    // Description
-	//$line.= "  <item turbo='true'>\n";
-	//$line.= "  <link>".generateLink('news', 'main', array(), array(), false, true)."</link>\n";
-	//$line.= "  <turbo:content> \n";
-	//$line.= " <![CDATA[\n";
-
-
-	return $line;
-}
+		// Channel title
+		$line.= " <title>".$config['home_title']."</title>\n";
+		// LINK
+		$line.= "
+		<link>".$config['home_url']."</link>\n";
+		// Description
+		$line.= " <description>".$config['description']."</description>\n";
+		return $line;
+		}
